@@ -4,7 +4,7 @@
 - React.js
 - MongoDB
 
-## Installation
+## Create a new CMS web app based on keystonejs
 
 1. Install MongoDB and Run
 
@@ -35,6 +35,15 @@
 	```bash
 	yo keystone
 	```
+
+### Update this app to React.js app
+
+	```bash
+	npm install keystone underscore --save
+
+
+	```
+
 
 ## Reference
 
