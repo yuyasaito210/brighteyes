@@ -38,9 +38,34 @@ exports = module.exports = function (app) {
 	app.get('/blog/:category?', routes.views.blog);
 	app.get('/blog/post/:post', routes.views.post);
 	app.get('/gallery', routes.views.gallery);
+	app.get('/recipe', routes.views.recipe);
+	app.get('/service', routes.views.service);
+	app.get('/service_category', routes.views.service_category);
+	app.get('/service_category/service/:service', routes.views.service);
 	app.all('/contact', routes.views.contact);
 
 	// NOTE: To protect a route so that only admins can see it, use the requireUser middleware:
 	// app.get('/protected', middleware.requireUser, routes.views.protected);
-
+	app.get('/index.html', function (req, res) {
+    // Render some simple boilerplate html
+    function renderFullPage() {
+    // Note the div class name here, we will use that as a hook for our React code
+   	// We are also adding the bundled javascript code
+      return `
+				<!doctype html>
+				<html>
+					<head>
+						<title>Keystone With React And Redux</title>
+					</head>
+		      <body>
+		        <div class="react-container">
+		        </div>
+						<script src="bundle.js"></script>
+					</body>
+				</html>
+				`;
+    }
+    // Send the html boilerplate
+    res.send(renderFullPage());
+  });
 };

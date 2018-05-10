@@ -40,8 +40,6 @@
 
 	```bash
 	npm install keystone underscore --save
-
-
 	```
 
 

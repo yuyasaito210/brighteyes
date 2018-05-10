@@ -203,8 +203,25 @@ module.exports = function () {
 	};
 
 	// create the category url for a blog-category page
-	_helpers.categoryUrl = function (categorySlug, options) {
-		return ('/blog/' + categorySlug);
+	_helpers.service_categoryUrl = function (service_categorySlug, options) {
+		return ('/service_category/' + service_categorySlug);
+	};
+
+	// ### Content Url Helpers
+	// Direct url link to a specific post
+	_helpers.servcieUrl = function (serviceSlug, options) {
+		return ('/service_category/service/' + serviceSlug);
+	};
+
+	// might be a ghost helper
+	// used for pagination urls on service categories
+	_helpers.pageUrl = function (pageNumber, options) {
+		return '/service_category?page=' + pageNumber;
+	};
+
+	// create the category url for a service-category page
+	_helpers.service_categoryUrl = function (service_categorySlug, options) {
+		return ('/service_category/' + service_categorySlug);
 	};
 
 	// ### Pagination Helpers
