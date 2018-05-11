@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title>Project</title>
+		<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+		<link href="/styles/site.css" rel="stylesheet">
+
+		{{!-- This file provides the default styling for the KeystoneJS Content Editor
+			- only renders when user is logged in and admin--}}
+		{{{isAdminEditorCSS user}}}
+
+		{{!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries
+		//- Safely remove this block if you are not targeting IE8 --}}
+		<!--[if lt IE 9]>
+			<script src="//cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.js"></script>
+			<script src="//cdn.jsdelivr.net/respond/1.4.2/respond.min.js"></script>
+		<![endif]-->
+
+	</head>
+	<body>
+		<div class="container-fluid h-100">
+		  <div class="row h-100">
+		    <aside class="col-12 col-md-2 p-0 bg-dark">
+		      <nav class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start py-2">
+		        <div class="collapse navbar-collapse">
+		          <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+		            <li class="nav-item">
+		              <a class="nav-link pl-0 text-nowrap" href="#"><i class="fa fa-bullseye fa-fw"></i> <span class="font-weight-bold">Brand</span></a>
+		            </li>
+								{{# each navLinks}}
+			            <li class="nav-item">
+			              <a class="nav-link pl-0 {{#ifeq ../section key}}active{{else}} {{/ifeq}}" href="{{ href }}"><i class="fa fa-heart-o fa-fw"></i> <span class="d-none d-md-inline">{{ label }}</span></a>
+			            </li>
+								{{/each}}
+		          </ul>
+							<form class="form-inline my-2 my-lg-0">
+								{{#if user}}
+										<a href="/keystone/signout" class="btn btn-outline-success my-2 my-sm-0">Sign out</a>
+									{{else}}
+										<a href="/keystone/signin" class="btn btn-outline-success my-2 my-sm-0" >Sign in</a>
+								{{/if}}
+							</form>
+		        </div>
+		      </nav>
+		    </aside>
+		    <main class="col bg-faded py-3">
+					<!--
+						Flash messages allow you to display once-off status messages to users, e.g. form
+						validation errors, success messages, etc
+					-->
+					{{#if messages}}
+						<div id="flash-messages" class="container">
+							{{#if messages.info}}
+							<div class="alert alert-info">
+									{{{flashMessages messages.info}}}
+							</div>
+							{{/if}}
+							{{#if messages.success}}
+							<div class="alert alert-success">
+									{{{flashMessages messages.success}}}
+							</div>
+							{{/if}}
+							{{#if messages.warning}}
+							<div class="alert alert-warning">
+									{{{flashMessages messages.warning}}}
+							</div>
+							{{/if}}
+							{{#if messages.error}}
+							<div class="alert alert-danger">
+									{{{flashMessages messages.error}}}
+							</div>
+							{{/if}}
+						</div>
+					{{/if}}
+						<!-- The content block should contain the body of your template's content-->
+					{{{body}}}
+				</main>
+		  </div>
+		</div>
+		<script src="/js/shared.bundle.js"></script> 
+	</body>
+</html>
