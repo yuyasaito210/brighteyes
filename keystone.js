@@ -11,8 +11,8 @@ var handlebars = require('express-handlebars');
 // and documentation.
 
 keystone.init({
-	'name': 'project',
-	'brand': 'project',
+	'name': 'Bright Eyes',
+	'brand': 'Bright Eyes',
 
 	'sass': 'public',
 	'static': 'public',
@@ -28,16 +28,27 @@ keystone.init({
 		extname: '.hbs',
 	}).engine,
 
+	// 'mongo': process.env.MONGO_URI || process.env.MONGOLAB_URI || 'mongodb://localhost/bright-eyes',
+	// 'cloudinary config': 'cloudinary://333779167276662:_8jbSi9FB3sWYrfimcl8VKh34rI@bright-eyes',
+	// 'cookie secret': process.env.COOKIE_SECRET || 'brighteyes',
+
 	'emails': 'templates/emails',
 
 	'auto update': true,
 	'session': true,
 	'auth': true,
 	'user model': 'User',
+
+	'chartbeat property': process.env.CHARTBEAT_PROPERTY,
+	'chartbeat domain': process.env.CHARTBEAT_DOMAIN
+
 });
 
 // Load your project's Models
 keystone.import('models');
+
+// Run to added admin user
+keystone.import('updates');
 
 // Setup common locals for your templates. The following are required for the
 // bundled templates and layouts. Any runtime locals (that should be set uniquely

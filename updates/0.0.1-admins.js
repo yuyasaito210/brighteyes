@@ -10,14 +10,13 @@
 exports.create = {
 	User: [
 		{ 'name.first': 'Admin', 'name.last': 'User',
-			'email': 'valeriiadidushok@gmail.com',
-			'password': '123456',
+			'email': 'admin@email.com',
+			'password': 'admin',
 			'isAdmin': true
 		},
 	],
 };
 
-/*
 
 // This is the long-hand version of the functionality above:
 
@@ -26,7 +25,12 @@ var async = require('async');
 var User = keystone.list('User');
 
 var admins = [
-	{ email: 'user@keystonejs.com', password: 'admin', name: { first: 'Admin', last: 'User' } }
+	{
+		email: 'admin@email.com',
+		password: 'admin',
+		name: { first: 'Admin', last: 'User' },
+		isAdmin: true
+	}
 ];
 
 function createAdmin (admin, done) {
@@ -46,8 +50,8 @@ function createAdmin (admin, done) {
 
 }
 
+createAdmin(admins[0]);
+
 exports = module.exports = function (done) {
 	async.forEach(admins, createAdmin, done);
 };
-
-*/

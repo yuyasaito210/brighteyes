@@ -133,6 +133,7 @@ module.exports = function () {
 
 	// block rendering for keystone admin js
 	_helpers.isAdminEditorJS = function (user, options) {
+		console.log('=== rendering for keystone admin js: ', user, options)
 		var output = '';
 		if (typeof (user) !== 'undefined' && user.isAdmin) {
 			output = scriptTemplate({

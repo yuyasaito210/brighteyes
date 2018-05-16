@@ -23,14 +23,11 @@ User.schema.virtual('canAccessKeystone').get(function () {
 });
 
 
-/**
- * Relationships
- */
-User.relationship({ ref: 'Post', path: 'posts', refPath: 'author' });
-
 
 /**
  * Registration
  */
-User.defaultColumns = 'name, email, isAdmin';
+// User.defaultColumns = 'name, email, isAdmin, phone, photo';
+User.track = true;
+User.defaultColumns = 'name, email, phone, photo';
 User.register();
